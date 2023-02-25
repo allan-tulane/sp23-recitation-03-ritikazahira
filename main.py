@@ -45,7 +45,27 @@ def pad(x,y):
     return x,y
 
 def quadratic_multiply(x, y):
-    ### TODO
+    n = len(x)
+    if n==1:
+        return[x[0]*y[0]
+    x0 = x[:n//2]
+    x1 = x[n//2:]
+    y0 = y[:n//2]
+    y1 = y[n//2:]
+    
+              
+    z0 = _quadratic_multiply(x0, y0)
+    z1 = _quadratic_multiply(x1,y1)
+    z2 = _quadratic_multiply[x0[i]+x1[i] for i in range(n//2)], [y0[i]+ y1[i] for i in range(n//2)])
+    
+    result = [0] * (2*n - 1)
+    for i in range(n-1):
+        result[i] += z0[i]
+        result[i+n]+= z1[i]
+        result[i+(n//2)] += z2[i] - z0[i] - z1[i]
+    result[2*n-2] += z2[n//2-1]
+    return result
+               
     pass
     ###
 
