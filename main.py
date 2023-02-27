@@ -70,6 +70,7 @@ def quadratic_multiply(x, y):
     result += bit_shift(z2 - z0 - z1, n//2)
     result += bit_shift(z1, n)
     
+    return result
                
     pass
     ###
