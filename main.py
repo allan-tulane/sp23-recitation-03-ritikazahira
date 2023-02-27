@@ -45,26 +45,31 @@ def pad(x,y):
     return x,y
 
 def quadratic_multiply(x, y):
-    n = len(x)
-    if n==1:
-        return[x[0]*y[0]
-    x0 = x[:n//2]
-    x1 = x[n//2:]
-    y0 = y[:n//2]
-    y1 = y[n//2:]
+    xvec = x.binary_vec
+    yvec = y.binary_vec
     
+    maxlen = max(len(xvec), len(yvec))
+    xvec = ['0'] * (maxlen - len(xvec)) + xvec
+    yvec = ['0'] * (maxlen - len(yvec)) + yvec
+    
+    if x.decimal_val <= 1 and y.decimal <= 1:
+        return BinaryNumber(x.decimal_val * y.decimal_val)
+    
+    xleft, xright = split_number(xvec)
+    yleft, yright = split_number(yvec)
               
-    z0 = _quadratic_multiply(x0, y0)
-    z1 = _quadratic_multiply(x1,y1)
-    z2 = _quadratic_multiply[x0[i]+x1[i] for i in range(n//2)], [y0[i]+ y1[i] for i in range(n//2)])
+    z0 = _quadratic_multiply(xleft, yleft)
+    z1 = _quadratic_multiply(xright,yright)
+    z2 = _quadratic_multiply(
+        binary2int([str(int(xvec[i]) + int(xvec[i+len(xvec)//2])) for i in range(len(xvec)//2)]),
+        binary2int([str(int(yvec[i]) + int(yvec[i+len(yvec)//2])) for i in range(len(yvec)//2)])
+    )
+
+    n = len(xvec)
+    result = z0
+    result += bit_shift(z2 - z0 - z1, n//2)
+    result += bit_shift(z1, n)
     
-    result = [0] * (2*n - 1)
-    for i in range(n-1):
-        result[i] += z0[i]
-        result[i+n]+= z1[i]
-        result[i+(n//2)] += z2[i] - z0[i] - z1[i]
-    result[2*n-2] += z2[n//2-1]
-    return result
                
     pass
     ###
