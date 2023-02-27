@@ -54,7 +54,7 @@ def quadratic_multiply(x, y):
     
     if x.decimal_val <= 1 and y.decimal <= 1:
         return BinaryNumber(x.decimal_val * y.decimal_val)
-    
+    xvec, yvec = pad(xvec, yvec)
     xleft, xright = split_number(xvec)
     yleft, yright = split_number(yvec)
               
