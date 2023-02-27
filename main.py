@@ -58,9 +58,9 @@ def quadratic_multiply(x, y):
     xleft, xright = split_number(xvec)
     yleft, yright = split_number(yvec)
               
-    z0 = _quadratic_multiply(xleft, yleft)
-    z1 = _quadratic_multiply(xright,yright)
-    z2 = _quadratic_multiply(
+    z0 = quadratic_multiply(xleft, yleft)
+    z1 = quadratic_multiply(xright,yright)
+    z2 = quadratic_multiply(
         binary2int([str(int(xvec[i]) + int(xvec[i+len(xvec)//2])) for i in range(len(xvec)//2)]),
         binary2int([str(int(yvec[i]) + int(yvec[i+len(yvec)//2])) for i in range(len(yvec)//2)])
     )
